@@ -65,16 +65,17 @@ export const store = new Vuex.Store({
                 return registration.userId == payload.userId;
             });
             state.registrations.splice(state.registrations.indexOf(registration), 1);
+            state.fake = [];
         }
     },
     actions: {
-        register(context, userId) {
+        register(context, userId) { //與 store 實例具有相同方法和屬性的 context 物件
 
             var fake = [
                 { name: "AAA", age: "18", },
                 { name: "BBB", age: "18", }
             ]
-
+            
             setTimeout(() => {
                 context.commit('register', userId);
                 context.commit('fakeMu', fake);
